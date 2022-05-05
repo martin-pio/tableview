@@ -1,25 +1,57 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+import "bootstrap/dist/css/bootstrap.min.css";
+import GaugeMeter from "./GaugeMeter";
+import { Grid } from "@mui/material";
+import { Box } from "@mui/system";
+import APPBAR from "./APPBAR";
+const App = () => {
+  // return ;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <APPBAR />
+
+      <br />
+      <br />
+      <br />
+
+      <Box
+        sx={{
+          width: "100%",
+        }}
+      >
+        <Grid
+          container
+          spacing={2}
+          columns={16}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Grid
+            item
+            xs={8}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItem: "center",
+            }}
+          >
+            <GaugeMeter />
+          </Grid>
+          <Grid
+            item
+            xs={8}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItem: "center",
+            }}
+          >
+            <GaugeMeter />
+          </Grid>
+        </Grid>
+      </Box>
+    </>
   );
-}
+};
 
 export default App;

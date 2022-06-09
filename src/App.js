@@ -1,55 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import TableExample from "./TableExample";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import GaugeMeter from "./GaugeMeter";
-import { Grid } from "@mui/material";
-import { Box } from "@mui/system";
-import APPBAR from "./APPBAR";
 const App = () => {
-  // return ;
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+  const fetchData = async () => {
+    // const response = await fetch("https://api.n-warehouse.com/users/tableview");
+    const response = await fetch("http://localhost:5000/tableview");
+    const json = await response.json();
+    setData(json);
+  };
   return (
     <>
-      <APPBAR />
-
-      <br />
-      <br />
-      <br />
-
-      <Box
-        sx={{
-          width: "100%",
-        }}
-      >
-        <Grid
-          container
-          spacing={2}
-          columns={16}
-          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        >
-          <Grid
-            item
-            xs={8}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItem: "center",
-            }}
-          >
-            <GaugeMeter />
-          </Grid>
-          <Grid
-            item
-            xs={8}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItem: "center",
-            }}
-          >
-            <GaugeMeter />
-          </Grid>
-        </Grid>
-      </Box>
+      <TableExample data={data} />
     </>
   );
 };
